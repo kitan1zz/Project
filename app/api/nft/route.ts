@@ -7,14 +7,18 @@ let nfts = [
   { id: '3', name: 'Коллекционная карта', owner: 'Чарли', image: '🃏' },
 ]
 
-let transactions: Array<{
+type TransactionStatus = 'pending' | 'confirmed' | 'failed'
+
+type Transaction = {
   id: string
   from: string
   to: string
   nftId: string
-  status: 'pending' | 'confirmed' | 'failed'
+  status: TransactionStatus
   timestamp: number
-}> = []
+}
+
+let transactions: Transaction[] = []
 
 export async function GET() {
   return NextResponse.json({ nfts, transactions })
@@ -45,12 +49,12 @@ export async function POST(request: NextRequest) {
     }
 
     // Создаём транзакцию
-    const transaction = {
+    const transaction: Transaction = {
       id: `tx_${Date.now()}`,
       from,
       to,
       nftId,
-      status: 'pending' as const,
+      status: 'pending',
       timestamp: Date.now(),
     }
 
@@ -71,6 +75,7 @@ export async function POST(request: NextRequest) {
       nfts,
     })
   } catch (error) {
+    console.error('Error processing NFT transfer:', error)
     return NextResponse.json(
       { error: 'Ошибка при обработке запроса' },
       { status: 500 }

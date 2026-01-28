@@ -190,6 +190,72 @@ export default function TONPage() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg mb-12"
+        >
+          <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">
+            NFT в Telegram (подарки)
+          </h2>
+          <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
+            В экосистеме TON NFT можно отправлять как подарки прямо в Telegram. Это делает NFT доступными для миллионов обычных пользователей.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Telegram Gift NFT Example */}
+            <div className="rounded-2xl border border-gray-200 dark:border-gray-700 p-6 bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-gray-800 dark:to-gray-900">
+              <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-white">Telegram NFT подарок</h3>
+              
+              <div className="relative mb-4 rounded-lg overflow-hidden border-2 border-cyan-200 dark:border-cyan-800">
+                <img
+                  src="/telegram-gift-nft.jpg"
+                  alt="Telegram NFT подарок"
+                  className="w-full h-auto object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement
+                    target.style.display = 'none'
+                  }}
+                />
+              </div>
+              
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                NFT можно отправить прямо в чате Telegram как обычный подарок
+              </p>
+            </div>
+
+            {/* Plush Pepe Example */}
+            <div className="rounded-2xl border border-gray-200 dark:border-gray-700 p-6 bg-gradient-to-br from-pink-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
+              <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-white">Plush Pepe</h3>
+              
+              <div className="relative mb-4 rounded-lg overflow-hidden border-2 border-pink-200 dark:border-pink-800">
+                <img
+                  src="/plush-pepe-example.jpg"
+                  alt="Plush Pepe NFT"
+                  className="w-full h-auto object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement
+                    target.style.display = 'none'
+                  }}
+                />
+              </div>
+              
+              <div className="mb-3 p-3 bg-pink-50 dark:bg-pink-900/20 rounded-lg">
+                <div className="text-xs text-pink-600 dark:text-pink-400 mb-1">Примерная цена</div>
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-bold text-pink-700 dark:text-pink-300">💎 ~150 TON</span>
+                  <span className="text-xs text-gray-600 dark:text-gray-400">(~$400)</span>
+                </div>
+              </div>
+              
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                В экосистеме TON NFT часто «живут» рядом с Telegram: ими проще делиться, их легче показать в интерфейсе мессенджера, а комиссии обычно небольшие.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ delay: 0.7 }}
           className="bg-gradient-to-r from-cyan-600 to-blue-600 rounded-2xl p-8 text-white shadow-lg"
         >

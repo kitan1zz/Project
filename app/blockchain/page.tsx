@@ -1,33 +1,27 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { BlockVisualization } from '@/components/BlockVisualization'
+import { BlockchainChain } from '@/components/BlockchainChain'
+import { MiningVisualization } from '@/components/MiningVisualization'
+import { BlockchainVisualization } from '@/components/BlockchainVisualization'
 import { Shield, Users, Lock, Network } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect } from 'react'
 
 export default function BlockchainPage() {
-  const [highlightBlock, setHighlightBlock] = useState<number | undefined>(undefined)
-
-  const blocks = [
-    {
-      id: 1,
-      data: 'Транзакция: Алиса → Боб (10 TON)',
-      hash: 'a1b2c3d4e5f6...',
-      prevHash: '000000000000...',
-    },
-    {
-      id: 2,
-      data: 'Транзакция: Боб → Чарли (5 TON)',
-      hash: 'b2c3d4e5f6a1...',
-      prevHash: 'a1b2c3d4e5f6...',
-    },
-    {
-      id: 3,
-      data: 'Транзакция: Чарли → Дэвид (3 TON)',
-      hash: 'c3d4e5f6a1b2...',
-      prevHash: 'b2c3d4e5f6a1...',
-    },
-  ]
+  // Подсветка слова при переходе по hash-якорю
+  useEffect(() => {
+    const hash = window.location.hash.slice(1)
+    if (hash) {
+      setTimeout(() => {
+        const element = document.getElementById(hash)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' })
+          element.classList.add('highlight-term')
+          setTimeout(() => element.classList.remove('highlight-term'), 3000)
+        }
+      }, 300)
+    }
+  }, [])
 
   const features = [
     {
@@ -80,20 +74,32 @@ export default function BlockchainPage() {
             </h2>
             <div className="space-y-4 text-gray-700 dark:text-gray-300">
               <p>
-                <strong className="text-blue-600 dark:text-blue-400">1. Транзакции</strong> — пользователи создают транзакции (переводы, операции)
+                <strong className="text-blue-600 dark:text-blue-400">1. Транзакции</strong> — пользователи создают транзакции (переводы, операции). 
+                Например, Алиса хочет отправить Бобу 10 TON. Она создаёт транзакцию с указанием адреса Боба и суммы.
               </p>
               <p>
-                <strong className="text-blue-600 dark:text-blue-400">2. Блоки</strong> — транзакции группируются в блоки
+                <strong className="text-blue-600 dark:text-blue-400">2. Блоки</strong> — транзакции группируются в блоки. 
+                Один блок может содержать сотни или тысячи транзакций. Это похоже на страницу в книге, где записано много операций.
               </p>
               <p>
-                <strong className="text-blue-600 dark:text-blue-400">3. Хеширование</strong> — каждый блок получает уникальный хеш (цифровую подпись)
+                <strong className="text-blue-600 dark:text-blue-400">3. Майнинг</strong> — майнеры проверяют транзакции в блоке и решают математическую задачу, 
+                чтобы найти правильный хеш. Это требует больших вычислительных ресурсов и времени.
               </p>
               <p>
-                <strong className="text-blue-600 dark:text-blue-400">4. Цепочка</strong> — блоки связываются через хеш предыдущего блока
+                <strong className="text-blue-600 dark:text-blue-400">4. Хеширование</strong> — каждый блок получает уникальный хеш (цифровую подпись), 
+                который зависит от данных блока и хеша предыдущего блока. Если изменить хотя бы один символ в данных, хеш полностью изменится.
               </p>
               <p>
-                <strong className="text-blue-600 dark:text-blue-400">5. Валидация</strong> — сеть проверяет корректность каждого блока
+                <strong className="text-blue-600 dark:text-blue-400">5. Цепочка</strong> — блоки связываются через хеш предыдущего блока. 
+                Это создаёт цепочку, где каждый блок «знает» о предыдущем. Если кто-то попытается изменить старый блок, нарушится связь со всеми последующими блоками.
               </p>
+              <p>
+                <strong className="text-blue-600 dark:text-blue-400">6. Валидация</strong> — сеть проверяет корректность каждого блока. 
+                Если блок прошёл проверку, он добавляется в цепочку, и транзакции считаются подтверждёнными.
+              </p>
+            </div>
+            <div className="mt-8">
+              <BlockchainVisualization />
             </div>
           </motion.div>
 
@@ -108,10 +114,17 @@ export default function BlockchainPage() {
             </h2>
             <div className="space-y-4 text-gray-700 dark:text-gray-300">
               <p>
-                Если кто-то попытается изменить данные в блоке, изменится его хеш. Это нарушит связь с последующими блоками, и сеть отклонит изменение.
+                Блокчейн безопасен благодаря нескольким механизмам. Во-первых, если кто-то попытается изменить данные в блоке, изменится его хеш. 
+                Это нарушит связь с последующими блоками, и сеть отклонит изменение, потому что хеши не будут совпадать.
               </p>
               <p>
-                Для успешной атаки нужно изменить все блоки после изменённого и получить согласие большинства узлов сети — это практически невозможно.
+                Во-вторых, для успешной атаки нужно изменить все блоки после изменённого и получить согласие большинства узлов сети — это практически невозможно. 
+                В сети Bitcoin, например, тысячи майнеров постоянно проверяют цепочку. Чтобы обмануть сеть, нужно контролировать более 50% вычислительной мощности, 
+                что требует огромных затрат и технически очень сложно.
+              </p>
+              <p>
+                В-третьих, каждый блок содержит хеш предыдущего блока. Это создаёт «цепочку доверия»: если изменить один блок, 
+                нужно пересчитать все последующие блоки, что требует невероятных вычислительных ресурсов.
               </p>
             </div>
           </motion.div>
@@ -123,27 +136,55 @@ export default function BlockchainPage() {
           transition={{ delay: 0.3 }}
           className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg mb-12"
         >
-          <h2 className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-white">
-            Визуализация цепочки блоков
+          <h2 id="майнинг" className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">
+            Как блокчейн связан с майнингом?
           </h2>
-          <div className="flex justify-center mb-4">
-            <button
-              onClick={() => {
-                setHighlightBlock(undefined)
-                setTimeout(() => {
-                  blocks.forEach((block, index) => {
-                    setTimeout(() => {
-                      setHighlightBlock(block.id)
-                    }, index * 1000)
-                  })
-                }, 100)
-              }}
-              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Анимировать цепочку
-            </button>
+          <div className="space-y-4 text-gray-700 dark:text-gray-300 mb-6">
+            <p>
+              <strong className="text-blue-600 dark:text-blue-400">Майнинг</strong> — это процесс, который позволяет добавлять новые блоки в блокчейн. 
+              Без майнинга (или альтернативных механизмов консенсуса) блокчейн не может существовать, потому что некому будет проверять и записывать транзакции.
+            </p>
+            <p>
+              Представьте блокчейн как книгу записей, а майнеров — как писателей, которые проверяют каждую страницу перед тем, как её добавить. 
+              Майнеры решают сложные математические задачи, чтобы доказать, что они потратили вычислительные ресурсы на проверку транзакций.
+            </p>
+            <p>
+              Когда майнер находит решение, он предлагает новый блок сети. Если блок корректен, он добавляется в цепочку, 
+              а майнер получает награду (обычно в виде криптовалюты). Это называется <strong>Proof of Work</strong> (доказательство работы).
+            </p>
+            <p>
+              Без майнинга транзакции не будут подтверждаться, блоки не будут добавляться, и блокчейн остановится. 
+              Майнинг — это «двигатель» блокчейна, который обеспечивает его работу и безопасность.
+            </p>
+            <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+              <h4 className="font-semibold mb-2 text-gray-900 dark:text-white">Какие вычисления производятся при майнинге?</h4>
+              <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
+                При майнинге майнеры выполняют множество криптографических вычислений для поиска правильного <strong>nonce</strong> (число, используемое один раз) — значения, которое при добавлении к данным блока даёт хеш, удовлетворяющий условию сложности сети.
+              </p>
+              <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
+                Процесс включает:
+              </p>
+              <ul className="text-sm text-gray-700 dark:text-gray-300 list-disc list-inside space-y-1 ml-2">
+                <li><strong>Хеширование:</strong> преобразование данных блока (транзакции, предыдущий хеш, nonce) в хеш с помощью алгоритма SHA-256</li>
+                <li><strong>Проверка сложности:</strong> проверка, начинается ли полученный хеш с определённого количества нулей (например, с 18-20 нулей)</li>
+                <li><strong>Перебор nonce:</strong> если хеш не подходит, майнер меняет nonce и повторяет вычисления</li>
+                <li><strong>Подтверждение:</strong> когда найден подходящий хеш, блок предлагается сети для проверки и добавления в цепочку</li>
+              </ul>
+              <p className="text-sm text-gray-700 dark:text-gray-300 mt-2">
+                Чем больше вычислительной мощности использует майнер, тем выше вероятность найти правильный nonce первым и получить награду.
+              </p>
+            </div>
           </div>
-          <BlockVisualization blocks={blocks} highlightBlock={highlightBlock} />
+          <MiningVisualization />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.35 }}
+          className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg mb-12"
+        >
+          <BlockchainChain />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

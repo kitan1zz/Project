@@ -12,11 +12,6 @@ export const bounded = localFont({
       weight: '200',
       style: 'normal',
     },
-    {
-      path: '../Bounded/Bounded-Black.ttf',
-      weight: '900',
-      style: 'normal',
-    },
   ],
   variable: '--font-bounded',
   display: 'swap',

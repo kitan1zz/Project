@@ -15,9 +15,8 @@ export function Navigation() {
     { href: '/blockchain', label: 'Блокчейн' },
     { href: '/cryptocurrency', label: 'Криптовалюта' },
     { href: '/nft', label: 'NFT' },
-    { href: '/telegram-ton', label: 'NFT в Telegram' },
-    { href: '/transaction', label: 'Транзакция' },
-    { href: '/ton-ecosystem', label: 'Экосистема TON' },
+    { href: '/ton', label: 'TON' },
+    { href: '/politics', label: 'Крипта в политике' },
   ]
 
   return (
@@ -27,7 +26,7 @@ export function Navigation() {
           <Link href="/" className="flex items-center space-x-2">
             <Home className="w-6 h-6 text-blue-600 dark:text-blue-400" />
             <span className="font-bold text-xl text-gray-900 dark:text-white">
-              Блокчейн Образование
+              Криптообразование
             </span>
           </Link>
 

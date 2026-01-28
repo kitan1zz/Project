@@ -11,8 +11,8 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Блокчейн и NFT: Образовательный портал',
-  description: 'Изучите основы блокчейна, NFT и экосистемы TON простым языком',
+  title: 'Криптообразование — блокчейн, криптовалюта, NFT и TON',
+  description: 'Образовательный сайт: блокчейн, криптовалюта, NFT и TON простым языком для начинающих',
 }
 
 export default function RootLayout({
