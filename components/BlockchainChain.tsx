@@ -53,11 +53,14 @@ export function BlockchainChain() {
 
   return (
     <div className="w-full py-10 px-4">
-      <div className="w-full mx-auto overflow-hidden">
+      <div className="w-full mx-auto">
         {/* Chain Container */}
-        <div className="w-full overflow-hidden">
-          <div className="overflow-x-auto py-6 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700" style={{ maxWidth: '100%', width: '100%' }}>
-            <div className="flex items-center gap-4 md:gap-6 lg:gap-8 xl:gap-10 min-w-max px-4 md:px-6 lg:px-8 xl:px-12 justify-center" style={{ minWidth: 'fit-content', width: 'max-content' }}>
+        <div className="w-full">
+          <div
+            className="overflow-x-auto py-8 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700"
+            style={{ maxWidth: '100%', width: '100%' }}
+          >
+            <div className="flex items-center gap-2 md:gap-3 lg:gap-4 xl:gap-5 min-w-max px-4 md:px-6 lg:px-8 xl:px-12 justify-center" style={{ minWidth: 'fit-content', width: 'max-content' }}>
             {blocks.map((block, index) => (
               <div key={block.id} className="flex items-center">
                 <motion.div
@@ -78,41 +81,27 @@ export function BlockchainChain() {
                 
                 {/* Connection Arrow */}
                 {index < blocks.length - 1 && (
-                  <motion.svg
-                    className="w-12 h-12 md:w-16 md:h-16 text-blue-500 flex-shrink-0"
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    whileInView={{ pathLength: 1, opacity: 1 }}
+                  <motion.div
+                    className="flex-shrink-0 -mx-1 md:-mx-2"
+                    initial={{ opacity: 0, scaleX: 0 }}
+                    whileInView={{ opacity: 1, scaleX: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 + 0.2, duration: 0.5 }}
+                    transition={{ delay: index * 0.1 + 0.2, duration: 0.35 }}
                   >
-                    <motion.path
-                      d="M 0 20 L 50 20"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      fill="none"
-                      strokeLinecap="round"
-                    />
-                    <motion.path
-                      d="M 40 10 L 50 20 L 40 30"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    {/* Animated flow effect */}
-                    <motion.circle
-                      r="3"
-                      fill="currentColor"
-                      initial={{ cx: 0, cy: 20 }}
-                      animate={{ cx: [0, 50, 0] }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "linear"
-                      }}
-                    />
-                  </motion.svg>
+                    <div className="relative w-9 md:w-10 lg:w-12 h-10 md:h-12">
+                      {/* Line */}
+                      <div className="absolute left-0 right-2 top-1/2 h-0.5 bg-blue-500/80 dark:bg-blue-400/80 -translate-y-1/2 rounded-full" />
+                      {/* Arrow head */}
+                      <div className="absolute right-1 top-1/2 w-2.5 h-2.5 border-r-2 border-b-2 border-blue-500/80 dark:border-blue-400/80 -translate-y-1/2 rotate-[-45deg]" />
+                      {/* Animated flow dot */}
+                      <motion.div
+                        className="absolute top-1/2 w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-blue-400 -translate-y-1/2"
+                        initial={{ left: 0, opacity: 0.7 }}
+                        animate={{ left: ['0%', '85%', '0%'], opacity: [0.5, 1, 0.5] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+                      />
+                    </div>
+                  </motion.div>
                 )}
               </div>
             ))}

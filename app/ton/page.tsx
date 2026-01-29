@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { MessageCircle, Zap, Wallet, Globe } from 'lucide-react'
+import { NFTPrice } from '@/components/NFTPrice'
 
 export default function TONPage() {
   const features = [
@@ -239,11 +240,11 @@ export default function TONPage() {
               </div>
               
               <div className="mb-3 p-3 bg-pink-50 dark:bg-pink-900/20 rounded-lg">
-                <div className="text-xs text-pink-600 dark:text-pink-400 mb-1">Примерная цена</div>
-                <div className="flex items-center gap-2">
-                  <span className="text-sm font-bold text-pink-700 dark:text-pink-300">💎 ~150 TON</span>
-                  <span className="text-xs text-gray-600 dark:text-gray-400">(~$400)</span>
-                </div>
+                <NFTPrice 
+                  usd={13000}
+                  ton={8700}
+                  colorClass="text-pink-600 dark:text-pink-400"
+                />
               </div>
               
               <p className="text-sm text-gray-700 dark:text-gray-300">

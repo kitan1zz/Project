@@ -31,7 +31,8 @@ export function MiningVisualization() {
   // «Предыдущий хэш» фиксированный для демо: так поведение всегда одинаковое.
   const previousHash = useMemo(() => 'A1B2C3D4', [])
   const difficultyPrefix = useMemo(() => '00', []) // сложность: хэш должен начинаться с "00"
-  const targetAttempts = useMemo(() => Math.floor(Math.random() * 4) + 1, []) // Рандом от 1 до 4
+  // Делает симуляцию «нагляднее»: больше переборов (вместо 1–4 попыток)
+  const targetAttempts = useMemo(() => Math.floor(Math.random() * 19) + 12, []) // 12..30
 
   const startMining = () => {
     if (intervalRef.current) {

@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import { BlockchainChain } from '@/components/BlockchainChain'
 import { MiningVisualization } from '@/components/MiningVisualization'
-import { BlockchainVisualization } from '@/components/BlockchainVisualization'
 import { Shield, Users, Lock, Network } from 'lucide-react'
 import { useEffect } from 'react'
 
@@ -99,7 +98,20 @@ export default function BlockchainPage() {
               </p>
             </div>
             <div className="mt-8">
-              <BlockchainVisualization />
+              <div className="relative rounded-lg overflow-hidden border-2 border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-900/50 aspect-video flex items-center justify-center">
+                <img
+                  src="/blockchain-visualization.jpg"
+                  alt="Визуализация блокчейна"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement
+                    target.style.display = 'none'
+                  }}
+                />
+                <div className="absolute inset-0 flex items-center justify-center text-gray-400 dark:text-gray-600">
+                  <span className="text-sm">Здесь будет картинка блокчейна</span>
+                </div>
+              </div>
             </div>
           </motion.div>
 

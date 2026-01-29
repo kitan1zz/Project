@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Image, Fingerprint, ShoppingCart, FileText, Gift, Lock, Zap } from 'lucide-react'
 import { useEffect } from 'react'
+import { NFTPrice } from '@/components/NFTPrice'
 
 export default function NFTPage() {
   // Подсветка слова при переходе по hash-якорю
@@ -158,11 +159,11 @@ export default function NFTPage() {
               </div>
               
               <div className="mb-3 p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
-                <div className="text-xs text-purple-600 dark:text-purple-400 mb-1">Floor Price</div>
-                <div className="flex items-center gap-2">
-                  <span className="text-lg font-bold text-purple-700 dark:text-purple-300">Ξ 15.5</span>
-                  <span className="text-sm text-gray-600 dark:text-gray-400">(~$50,000)</span>
-                </div>
+                <NFTPrice 
+                  eth={10}
+                  usd={30000}
+                  colorClass="text-purple-600 dark:text-purple-400"
+                />
               </div>
               
               <p className="mt-2 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -187,11 +188,11 @@ export default function NFTPage() {
               </div>
               
               <div className="mb-3 p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
-                <div className="text-xs text-amber-600 dark:text-amber-400 mb-1">Floor Price</div>
-                <div className="flex items-center gap-2">
-                  <span className="text-lg font-bold text-amber-700 dark:text-amber-300">Ξ 45</span>
-                  <span className="text-sm text-gray-600 dark:text-gray-400">(~$150,000)</span>
-                </div>
+                <NFTPrice 
+                  eth={33.3}
+                  usd={100000}
+                  colorClass="text-amber-600 dark:text-amber-400"
+                />
               </div>
               
               <p className="mt-2 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -208,9 +209,9 @@ export default function NFTPage() {
               </p>
               
               <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                <li>• Azuki: Ξ 3.5 (~$11,000)</li>
-                <li>• Pudgy Penguins: Ξ 4.2 (~$13,000)</li>
-                <li>• Doodles: Ξ 1.8 (~$6,000)</li>
+                <li>• Azuki: Ξ 1.3 (~$4,000)</li>
+                <li>• Pudgy Penguins: Ξ 4.3 (~$13,000)</li>
+                <li>• Doodles: Ξ 0.5 (~$1,500)</li>
               </ul>
             </div>
           </div>

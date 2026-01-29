@@ -46,7 +46,23 @@ export function CryptoMarketChart() {
       <div className="w-full max-w-3xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           {/* Pie Chart */}
-          <div className="w-full flex justify-center">
+          <div className="w-full flex flex-col items-center justify-center">
+            {/* Labels above the circle */}
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-center mb-4"
+            >
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+                Общий рынок
+              </h3>
+              <p className="text-xl font-semibold text-gray-600 dark:text-gray-400">
+                $2,000 млрд
+              </p>
+            </motion.div>
+            
             <svg
               width="400"
               height="400"
@@ -80,24 +96,6 @@ export function CryptoMarketChart() {
               ))}
               {/* Center circle for donut effect */}
               <circle cx="200" cy="200" r="60" fill="white" className="dark:fill-gray-800" />
-              <text
-                x="200"
-                y="195"
-                textAnchor="middle"
-                className="text-2xl font-bold fill-gray-900 dark:fill-white"
-                fontSize="18"
-              >
-                Общий рынок
-              </text>
-              <text
-                x="200"
-                y="215"
-                textAnchor="middle"
-                className="text-xl font-semibold fill-gray-600 dark:fill-gray-400"
-                fontSize="14"
-              >
-                $2,000 млрд
-              </text>
             </svg>
           </div>
           
