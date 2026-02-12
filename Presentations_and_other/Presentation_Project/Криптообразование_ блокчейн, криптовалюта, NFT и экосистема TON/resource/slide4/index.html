@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru" htmlid="slide4" style="scrollbar-width: none;"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Что такое Блокчейн</title>
+    <script src="../slide1/scripts/bcf031ff-7576-46aa-8ebf-258e9c7a2f41.js"></script>
+    <script src="../slide1/scripts/e4e4d9ef-3f7b-4d48-9b35-8c79d27ea125.js"></script>
+    <link href="../slide2/links/1be33ad4-bbbb-4eef-b387-dec896578102.css" rel="stylesheet">
+    <link rel="stylesheet" href="../slide1/links/d1d1cade-5a82-4435-9416-a01d7d5fca69.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #1a1a2e; color: #ffffff; overflow: hidden; margin: 0; padding: 0; }
+        .block-container { perspective: 1000px; }
+        .crypto-block { 
+            background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            border: 1px solid rgba(78, 204, 163, 0.3);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+        }
+        .chain-link {
+            height: 4px;
+            background: linear-gradient(90deg, #4ecca3, #a78bfa);
+            box-shadow: 0 0 10px rgba(78, 204, 163, 0.5);
+        }
+        .feature-card {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+<script edit-id="e26f4d25-5a68-469d-9517-a7045ace1c75">window.__g_cdnHost_1a1ee15f06b60c7d5f700d923ee61789 = "//qhstatic-sg-s3.coohom.com/__p/static/-meijianGroups-client-mj-voxdeck-micro";</script><script type="pub-meta" pt="micro" pn="meijian-voxdeck-ai-micros-slides-edit-service" pv="defualttag" ps="1641708" edit-id="2695a69f-e81c-4ed6-be48-b21985777e5f"></script><script src="../slide1/scripts/1c8895db-3b2c-43e6-9c34-b141745df1e6.js" ps="1641708" edit-id="dde88e0a-8d76-45de-86ef-fe5b4fc8a825"></script></head>
+<body>
+    <div class="relative w-[1280px] min-h-[720px] h-auto p-12 flex flex-col overflow-hidden">
+        
+        <!-- Header -->
+        <div class="text-center mb-12 header-anim">
+            <h1 class="text-5xl font-bold mb-4">Блокчейн: Цифровая Цепочка</h1>
+            <p class="text-xl text-gray-400">Технология распределенного реестра простыми словами</p>
+        </div>
+
+        <!-- Visual Schematic Section -->
+        <div class="flex-1 flex flex-col justify-center items-center mb-12 relative block-anim-container">
+            <div class="flex items-center gap-4 w-full justify-center px-10">
+                
+                <!-- Block 1 -->
+                <div class="crypto-block w-64 h-48 rounded-xl p-6 flex flex-col justify-between relative z-10 block-item">
+                    <div class="text-xs text-gray-400 font-mono">HASH: 000...A1B2</div>
+                    <div class="text-center">
+                        <i class="fas fa-cube text-4xl text-[#4ecca3] mb-2"></i>
+                        <div class="font-bold">Блок #1</div>
+                        <div class="text-xs text-gray-400">Данные транзакций</div>
+                    </div>
+                    <div class="text-xs text-gray-500 font-mono">PREV: 000...0000</div>
+                </div>
+
+                <!-- Link -->
+                <div class="w-16 chain-link rounded-full relative link-item">
+                    <i class="fas fa-link absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-sm bg-[#1a1a2e] p-1 rounded-full border border-[#4ecca3]"></i>
+                </div>
+
+                <!-- Block 2 -->
+                <div class="crypto-block w-64 h-48 rounded-xl p-6 flex flex-col justify-between relative z-10 block-item">
+                    <div class="text-xs text-gray-400 font-mono">HASH: 000...C3D4</div>
+                    <div class="text-center">
+                        <i class="fas fa-cube text-4xl text-[#4ecca3] mb-2"></i>
+                        <div class="font-bold">Блок #2</div>
+                        <div class="text-xs text-gray-400">Данные транзакций</div>
+                    </div>
+                    <div class="text-xs text-[#a78bfa] font-mono font-bold">PREV: ...A1B2</div>
+                </div>
+
+                <!-- Link -->
+                <div class="w-16 chain-link rounded-full relative link-item">
+                     <i class="fas fa-link absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-sm bg-[#1a1a2e] p-1 rounded-full border border-[#4ecca3]"></i>
+                </div>
+
+                <!-- Block 3 -->
+                <div class="crypto-block w-64 h-48 rounded-xl p-6 flex flex-col justify-between relative z-10 block-item">
+                    <div class="text-xs text-gray-400 font-mono">HASH: 000...E5F6</div>
+                    <div class="text-center">
+                        <i class="fas fa-cube text-4xl text-[#4ecca3] mb-2"></i>
+                        <div class="font-bold">Блок #3</div>
+                        <div class="text-xs text-gray-400">Данные транзакций</div>
+                    </div>
+                    <div class="text-xs text-[#a78bfa] font-mono font-bold">PREV: ...C3D4</div>
+                </div>
+
+            </div>
+            
+            <div class="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#4ecca3] to-transparent opacity-20 blur-sm"></div>
+        </div>
+
+        <!-- Explanatory Cards -->
+        <div class="grid grid-cols-3 gap-8 px-8">
+            <div class="feature-card p-6 rounded-xl info-card">
+                <div class="w-12 h-12 bg-[#4ecca3]/20 rounded-lg flex items-center justify-center mb-4 text-[#4ecca3]">
+                    <i class="fas fa-book-open text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Что это?</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Распределенная база данных, которая хранится одновременно на тысячах компьютеров, а не на одном сервере.
+                </p>
+            </div>
+
+            <div class="feature-card p-6 rounded-xl info-card">
+                <div class="w-12 h-12 bg-[#a78bfa]/20 rounded-lg flex items-center justify-center mb-4 text-[#a78bfa]">
+                    <i class="fas fa-link text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Принцип цепи</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Каждый новый блок содержит "отпечаток" предыдущего. Это намертво связывает их в единую последовательность.
+                </p>
+            </div>
+
+            <div class="feature-card p-6 rounded-xl info-card">
+                <div class="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center mb-4 text-red-400">
+                    <i class="fas fa-shield-alt text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Нельзя подделать</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Попытка изменить данные в прошлом блоке разрушит связь со всеми последующими блоками, и сеть это отвергнет.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const tl = gsap.timeline();
+
+        tl.fromTo(".header-anim", 
+            { opacity: 0, y: -30 }, 
+            { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
+        )
+        .fromTo(".block-item", 
+            { opacity: 0, y: 50, rotationX: -15 }, 
+            { opacity: 1, y: 0, rotationX: 0, duration: 0.8, stagger: 0.2, ease: "back.out(1.2)" },
+            "-=0.4"
+        )
+        .fromTo(".link-item", 
+            { width: 0, opacity: 0 }, 
+            { width: 64, opacity: 1, duration: 0.6, stagger: 0.2, ease: "power2.inOut" },
+            "-=1.2"
+        )
+        .fromTo(".info-card", 
+            { opacity: 0, y: 20 }, 
+            { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, ease: "power2.out" },
+            "-=0.2"
+        );
+
+        // Subtle floating animation for blocks
+        gsap.to(".block-item", {
+            y: -10,
+            duration: 2,
+            stagger: {
+                each: 0.5,
+                yoyo: true,
+                repeat: -1
+            },
+            ease: "sine.inOut"
+        });
+    </script>
+
+<script src="../slide1/scripts/7f2de3ae-ff5b-4b2e-a5f5-70ff588ebce0.js" ps="1641708" edit-id="c7eabfba-a74a-4490-a0e3-22c451305fb8"></script></body></html>

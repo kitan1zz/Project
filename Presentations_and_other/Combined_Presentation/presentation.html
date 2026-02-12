@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Криптообразование — блокчейн, криптовалюта, NFT и TON</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {} }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #000; overflow: hidden; }
+    .slide { display: none; width: 1280px; height: 720px; margin: 0 auto; position: relative; overflow: hidden; }
+    .slide.active { display: flex; }
+    .slide-nav { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; align-items: center; gap: 16px; background: rgba(49,52,56,0.95); padding: 8px 16px; border-radius: 8px; color: #e2e8f0; }
+    .slide-nav button { background: none; border: none; color: inherit; cursor: pointer; padding: 4px 12px; font-size: 14px; }
+    .slide-nav button:hover { opacity: 0.8; }
+    .slide-counter { font-size: 12px; min-width: 60px; text-align: center; }
+  </style>
+</head>
+<body>
+  <div id="presentation">
+    <!-- 1. Титульный -->
+    <div class="slide active" data-slide="1">
+      <div class="absolute inset-0 bg-[#1a1a2e] flex flex-col justify-center items-center" style="background: radial-gradient(circle at center, #232342 0%, #1a1a2e 100%);">
+        <div class="relative z-10 text-center max-w-[900px] p-10">
+          <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-14">
+            <div class="text-[#4ecca3] font-semibold tracking-wider uppercase text-sm mb-4">Учебный проект</div>
+            <h1 class="text-6xl font-extrabold leading-tight mb-6" style="background: linear-gradient(135deg,#fff 0%,#a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Криптообразование:<br>блокчейн, криптовалюта,<br>NFT и экосистема TON</h1>
+            <div class="border-t border-white/10 pt-8 space-y-2 text-slate-300">
+              <div class="flex justify-center items-center gap-2"><i class="fas fa-user text-[#4ecca3]"></i><span>Автор: Черников Максим Эдуардович</span></div>
+              <div class="flex justify-center items-center gap-2"><i class="fas fa-school text-[#4ecca3]"></i><span>ГБОУ г. Москвы «Школа № 1208»</span></div>
+              <div class="flex justify-center items-center gap-2"><i class="far fa-calendar text-[#4ecca3]"></i><span>2025</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Введение -->
+    <div class="slide" data-slide="2">
+      <div class="absolute inset-0 bg-[#1a1a2e] p-16 flex flex-col justify-center">
+        <div class="mb-12">
+          <div class="flex items-center gap-4 mb-4"><div class="w-12 h-1 bg-[#4ecca3] rounded-full"></div><h2 class="text-[#a78bfa] font-semibold tracking-wider uppercase text-sm">О проекте</h2></div>
+          <h1 class="text-5xl font-bold mb-4">Введение в проект</h1>
+          <p class="text-xl text-gray-400 max-w-2xl">Почему важно понимать криптовалюты и как мы делаем это доступным для каждого.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-8">
+          <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8">
+            <div class="flex items-start gap-4 mb-6">
+              <div class="w-14 h-14 rounded-xl flex items-center justify-center text-2xl" style="background: rgba(78,204,163,0.15); color: #4ecca3;"><i class="fas fa-globe"></i></div>
+              <div><h3 class="text-2xl font-bold mb-2">Актуальность темы</h3><p class="text-gray-300">Цифровые активы становятся частью повседневной жизни. От инвестиций до простых переводов в Telegram — криптовалюты меняют привычные финансовые процессы.</p></div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-14 h-14 rounded-xl flex items-center justify-center text-2xl" style="background: rgba(167,139,250,0.15); color: #a78bfa;"><i class="fas fa-question-circle"></i></div>
+              <div><h3 class="text-2xl font-bold mb-2">Проблема</h3><p class="text-gray-300">Большинство материалов перегружены сложными терминами. Новичкам трудно разобраться в технологии без технического бэкграунда.</p></div>
+            </div>
+          </div>
+          <div class="bg-white/5 border border-[#4ecca3]/30 backdrop-blur-md rounded-2xl p-8">
+            <h3 class="text-3xl font-bold mb-6 text-center">Основная идея сайта</h3>
+            <div class="space-y-6">
+              <div class="flex items-center gap-4 bg-white/5 p-4 rounded-xl"><i class="fas fa-check-circle text-[#4ecca3] text-xl"></i><span class="text-lg">Объяснить сложные вещи <strong>простым языком</strong></span></div>
+              <div class="flex items-center gap-4 bg-white/5 p-4 rounded-xl"><i class="fas fa-eye text-[#4ecca3] text-xl"></i><span class="text-lg">Использовать <strong>наглядные визуализации</strong></span></div>
+              <div class="flex items-center gap-4 bg-white/5 p-4 rounded-xl"><i class="fas fa-graduation-cap text-[#4ecca3] text-xl"></i><span class="text-lg">Создать доступный <strong>учебный материал</strong></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Цель и задачи -->
+    <div class="slide" data-slide="3">
+      <div class="absolute inset-0 bg-[#1a1a2e] p-16 flex flex-col">
+        <div class="mb-10">
+          <div class="flex items-center gap-3 mb-2"><i class="fas fa-bullseye text-[#4ecca3]"></i><span class="text-[#a78bfa] font-semibold tracking-wider uppercase text-sm">Направление работы</span></div>
+          <h1 class="text-5xl font-bold">Цель и задачи проекта</h1>
+        </div>
+        <div class="flex gap-10 flex-1">
+          <div class="w-1/3">
+            <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8 h-full">
+              <i class="fas fa-flag-checkered text-5xl mb-6" style="background: linear-gradient(135deg,#4ecca3,#2d8a6e); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+              <h2 class="text-3xl font-bold mb-4 text-[#4ecca3]">Главная цель</h2>
+              <p class="text-xl text-gray-200 leading-relaxed mb-6">Помочь пользователю разобраться в мире криптовалют и блокчейна, дав уверенность при работе с цифровыми активами.</p>
+              <div class="flex items-center gap-3 text-sm text-gray-400 pt-6 border-t border-white/10"><i class="fas fa-user-graduate"></i><span>Ориентировано на новичков</span></div>
+            </div>
+          </div>
+          <div class="w-2/3 space-y-4">
+            <h3 class="text-2xl font-semibold text-gray-300">Задачи проекта:</h3>
+            <div class="border-l-4 border-[#4ecca3] bg-[#4ecca3]/5 p-6 rounded-r-xl flex items-center gap-6"><div class="w-12 h-12 rounded-full bg-[#4ecca3]/10 flex items-center justify-center text-[#4ecca3]"><i class="fas fa-link text-xl"></i></div><div><h4 class="text-xl font-bold mb-1">Принципы блокчейна</h4><p class="text-gray-400">Объяснить структуру и надежность цепочки блоков</p></div></div>
+            <div class="border-l-4 border-[#63b3ed] bg-[#63b3ed]/5 p-6 rounded-r-xl flex items-center gap-6"><div class="w-12 h-12 rounded-full bg-[#63b3ed]/10 flex items-center justify-center text-[#63b3ed]"><i class="fas fa-coins text-xl"></i></div><div><h4 class="text-xl font-bold mb-1">Криптовалюта и майнинг</h4><p class="text-gray-400">Показать механизмы работы и эмиссии цифровых денег</p></div></div>
+            <div class="border-l-4 border-[#a78bfa] bg-[#a78bfa]/5 p-6 rounded-r-xl flex items-center gap-6"><div class="w-12 h-12 rounded-full bg-[#a78bfa]/10 flex items-center justify-center text-[#a78bfa]"><i class="fas fa-gem text-xl"></i></div><div><h4 class="text-xl font-bold mb-1">NFT и Telegram / TON</h4><p class="text-gray-400">Раскрыть суть невзаимозаменяемых токенов и их роль в экосистеме</p></div></div>
+            <div class="border-l-4 border-[#f687b3] bg-[#f687b3]/5 p-6 rounded-r-xl flex items-center gap-6"><div class="w-12 h-12 rounded-full bg-[#f687b3]/10 flex items-center justify-center text-[#f687b3]"><i class="fas fa-laptop-code text-xl"></i></div><div><h4 class="text-xl font-bold mb-1">Образовательный сайт</h4><p class="text-gray-400">Создать наглядный и интерактивный веб-ресурс</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Целевая аудитория (НОВЫЙ) -->
+    <div class="slide" data-slide="4">
+      <div class="absolute inset-0 bg-[#1a1a2e] p-16 flex flex-col justify-center">
+        <div class="mb-12">
+          <div class="flex items-center gap-4 mb-4"><div class="w-12 h-1 bg-[#4ecca3] rounded-full"></div><h2 class="text-[#a78bfa] font-semibold tracking-wider uppercase text-sm">Для кого проект</h2></div>
+          <h1 class="text-5xl font-bold mb-4">Целевая аудитория</h1>
+          <p class="text-xl text-gray-400 max-w-2xl">Образовательный ресурс ориентирован на широкий круг пользователей, желающих разобраться в криптотехнологиях.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-8">
+          <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8">
+            <div class="w-16 h-16 rounded-2xl bg-[#4ecca3]/20 flex items-center justify-center mb-6"><i class="fas fa-user-graduate text-3xl text-[#4ecca3]"></i></div>
+            <h3 class="text-2xl font-bold mb-3">Школьники и студенты</h3>
+            <p class="text-gray-300 leading-relaxed">Учащиеся, изучающие информатику и современные технологии. Материал подходит для подготовки к урокам и проектной деятельности.</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8">
+            <div class="w-16 h-16 rounded-2xl bg-[#a78bfa]/20 flex items-center justify-center mb-6"><i class="fas fa-user text-3xl text-[#a78bfa]"></i></div>
+            <h3 class="text-2xl font-bold mb-3">Новички в крипто</h3>
+            <p class="text-gray-300 leading-relaxed">Пользователи, которые слышали о блокчейне и криптовалютах, но не понимают, как это работает. Объяснения без сложного жаргона.</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8">
+            <div class="w-16 h-16 rounded-2xl bg-[#0088cc]/20 flex items-center justify-center mb-6"><i class="fab fa-telegram text-3xl text-[#0088cc]"></i></div>
+            <h3 class="text-2xl font-bold mb-3">Пользователи Telegram</h3>
+            <p class="text-gray-300 leading-relaxed">Те, кто использует TON и NFT в мессенджере. Хотят понять, что такое цифровые подарки и кошельки в Telegram.</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8">
+            <div class="w-16 h-16 rounded-2xl bg-[#10b981]/20 flex items-center justify-center mb-6"><i class="fas fa-chalkboard-teacher text-3xl text-[#10b981]"></i></div>
+            <h3 class="text-2xl font-bold mb-3">Педагоги</h3>
+            <p class="text-gray-300 leading-relaxed">Учителя информатики и смежных предметов, ищущие наглядные материалы для объяснения темы блокчейна в классе.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Блокчейн -->
+    <div class="slide" data-slide="5">
+      <div class="absolute inset-0 bg-[#1a1a2e] p-12 flex flex-col">
+        <div class="text-center mb-12">
+          <h1 class="text-5xl font-bold mb-4">Блокчейн: Цифровая Цепочка</h1>
+          <p class="text-xl text-gray-400">Технология распределенного реестра простыми словами</p>
+        </div>
+        <div class="flex-1 flex items-center justify-center mb-12">
+          <div class="flex items-center gap-4">
+            <div class="w-64 h-48 rounded-xl p-6 flex flex-col justify-between bg-white/5 border border-[#4ecca3]/30"><div class="text-xs text-gray-400 font-mono">HASH: 000...A1B2</div><div class="text-center"><i class="fas fa-cube text-4xl text-[#4ecca3] mb-2"></i><div class="font-bold">Блок #1</div><div class="text-xs text-gray-400">Данные транзакций</div></div><div class="text-xs text-gray-500 font-mono">PREV: 000...0000</div></div>
+            <div class="w-16 h-1 rounded-full" style="background: linear-gradient(90deg,#4ecca3,#a78bfa);"></div>
+            <div class="w-64 h-48 rounded-xl p-6 flex flex-col justify-between bg-white/5 border border-[#4ecca3]/30"><div class="text-xs text-gray-400 font-mono">HASH: 000...C3D4</div><div class="text-center"><i class="fas fa-cube text-4xl text-[#4ecca3] mb-2"></i><div class="font-bold">Блок #2</div><div class="text-xs text-gray-400">Данные транзакций</div></div><div class="text-xs text-[#a78bfa] font-mono font-bold">PREV: ...A1B2</div></div>
+            <div class="w-16 h-1 rounded-full" style="background: linear-gradient(90deg,#4ecca3,#a78bfa);"></div>
+            <div class="w-64 h-48 rounded-xl p-6 flex flex-col justify-between bg-white/5 border border-[#4ecca3]/30"><div class="text-xs text-gray-400 font-mono">HASH: 000...E5F6</div><div class="text-center"><i class="fas fa-cube text-4xl text-[#4ecca3] mb-2"></i><div class="font-bold">Блок #3</div><div class="text-xs text-gray-400">Данные транзакций</div></div><div class="text-xs text-[#a78bfa] font-mono font-bold">PREV: ...C3D4</div></div>
+          </div>
+        </div>
+        <div class="grid grid-cols-3 gap-8">
+          <div class="bg-[#1a1a2e]/80 border border-white/10 rounded-xl p-6"><div class="w-12 h-12 bg-[#4ecca3]/20 rounded-lg flex items-center justify-center mb-4 text-[#4ecca3]"><i class="fas fa-book-open text-xl"></i></div><h3 class="text-xl font-bold mb-2">Что это?</h3><p class="text-gray-400 text-sm">Распределенная база данных, которая хранится одновременно на тысячах компьютеров.</p></div>
+          <div class="bg-[#1a1a2e]/80 border border-white/10 rounded-xl p-6"><div class="w-12 h-12 bg-[#a78bfa]/20 rounded-lg flex items-center justify-center mb-4 text-[#a78bfa]"><i class="fas fa-link text-xl"></i></div><h3 class="text-xl font-bold mb-2">Принцип цепи</h3><p class="text-gray-400 text-sm">Каждый новый блок содержит «отпечаток» предыдущего — связывает их в единую последовательность.</p></div>
+          <div class="bg-[#1a1a2e]/80 border border-white/10 rounded-xl p-6"><div class="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center mb-4 text-red-400"><i class="fas fa-shield-alt text-xl"></i></div><h3 class="text-xl font-bold mb-2">Нельзя подделать</h3><p class="text-gray-400 text-sm">Изменение прошлого блока разрушит связь — сеть отвергнет такую попытку.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Криптовалюта и Майнинг -->
+    <div class="slide" data-slide="6">
+      <div class="absolute inset-0 bg-[#1a1a2e] p-12 flex flex-col">
+        <div class="flex justify-between items-end mb-12">
+          <div><h1 class="text-5xl font-bold mb-2">Криптовалюта и Майнинг</h1><p class="text-xl text-gray-400">Откуда берутся цифровые деньги и кто их защищает</p></div>
+        </div>
+        <div class="flex gap-8 flex-1">
+          <div class="w-1/3 space-y-6">
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6"><div class="flex items-center gap-4 mb-3"><div class="w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center text-yellow-400"><i class="fas fa-coins text-xl"></i></div><h3 class="text-xl font-bold">Криптовалюта</h3></div><p class="text-gray-300 text-sm">Цифровые деньги, которые не контролируются банками. Существуют только в блокчейне и защищены криптографией.</p></div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6"><div class="flex items-center gap-4 mb-3"><div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400"><i class="fas fa-server text-xl"></i></div><h3 class="text-xl font-bold">Майнинг</h3></div><p class="text-gray-300 text-sm">Процесс поддержки сети. Компьютеры решают сложные задачи для подтверждения транзакций.</p></div>
+            <div class="p-4 border border-[#4ecca3]/30 rounded-xl bg-[#4ecca3]/5"><div class="flex items-start gap-3"><i class="fas fa-lightbulb text-[#4ecca3] mt-1"></i><p class="text-sm text-[#4ecca3]"><strong>Суть:</strong> Майнеры тратят электричество на защиту сети, а взамен получают награду.</p></div></div>
+          </div>
+          <div class="w-2/3 bg-[#16213e] rounded-2xl p-8 flex flex-col justify-center">
+            <h3 class="text-2xl font-bold mb-8 text-center">Как это работает?</h3>
+            <div class="flex items-center justify-between">
+              <div class="flex flex-col items-center text-center w-48"><div class="w-20 h-20 rounded-full bg-gray-700 flex items-center justify-center mb-4 border-2 border-gray-600"><i class="fas fa-calculator text-3xl text-gray-300"></i></div><h4 class="font-bold mb-2">Сложная задача</h4><p class="text-xs text-gray-400">Сеть дает математическую задачу</p></div>
+              <i class="fas fa-chevron-right text-[#4ecca3] text-2xl opacity-50"></i>
+              <div class="flex flex-col items-center text-center w-48"><div class="w-20 h-20 rounded-full bg-blue-900/50 flex items-center justify-center mb-4 border-2 border-blue-500"><i class="fas fa-microchip text-3xl text-blue-400"></i></div><h4 class="font-bold mb-2">Вычисления</h4><p class="text-xs text-gray-400">Компьютеры ищут решение</p></div>
+              <i class="fas fa-chevron-right text-[#4ecca3] text-2xl opacity-50"></i>
+              <div class="flex flex-col items-center text-center w-48"><div class="w-20 h-20 rounded-full bg-yellow-900/30 flex items-center justify-center mb-4 border-2 border-yellow-500"><i class="fas fa-gift text-3xl text-yellow-400"></i></div><h4 class="font-bold mb-2">Награда</h4><p class="text-xs text-gray-400">Победитель получает монеты</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. NFT -->
+    <div class="slide" data-slide="7">
+      <div class="absolute inset-0 bg-[#1a1a2e] p-12 flex flex-col">
+        <div class="flex items-center gap-6 mb-10">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg font-bold text-2xl" style="background: linear-gradient(135deg,#a78bfa,#4ecca3);">NFT</div>
+          <div><h1 class="text-5xl font-bold mb-2">Не просто картинки</h1><p class="text-xl text-gray-400">Non-Fungible Token — уникальный цифровой сертификат</p></div>
+        </div>
+        <div class="grid grid-cols-2 gap-12 flex-1">
+          <div class="space-y-6">
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-8"><h3 class="text-2xl font-bold mb-4 text-[#4ecca3]">Что это такое?</h3><p class="text-gray-300 text-lg mb-6">Это запись в блокчейне, которая подтверждает, что именно <strong>вы</strong> владеете конкретным цифровым объектом.</p><div class="flex items-center gap-4 text-sm text-gray-400 bg-black/20 p-4 rounded-xl"><i class="fas fa-fingerprint text-2xl text-[#a78bfa]"></i><span>Нельзя скопировать право владения, даже если скопировать саму картинку.</span></div></div>
+            <div class="grid grid-cols-2 gap-4"><div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center"><i class="fas fa-images text-3xl text-pink-400 mb-3"></i><h4 class="font-bold">Коллекции</h4><p class="text-xs text-gray-400 mt-2">Цифровое искусство и аватары</p></div><div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center"><i class="fas fa-id-card text-3xl text-blue-400 mb-3"></i><h4 class="font-bold">Доступы</h4><p class="text-xs text-gray-400 mt-2">Закрытые клубы (как BAYC)</p></div></div>
+          </div>
+          <div class="relative flex items-center justify-center"><div class="bg-white/5 border border-white/10 rounded-2xl p-4 w-80 bg-[#1e1e2f]"><div class="w-full h-64 rounded-xl mb-4 flex items-center justify-center" style="background: linear-gradient(45deg,#4ecca3,#a78bfa);"><i class="fas fa-robot text-6xl text-white/80"></i></div><div class="flex justify-between mb-2"><div><h4 class="font-bold text-lg">Cyber Punk #2077</h4><span class="text-xs text-gray-400">Created by ArtBot</span></div><div class="text-right"><div class="text-[#4ecca3] font-bold text-sm">150 TON</div></div></div><div class="flex gap-2 mt-4"><span class="bg-white/10 px-3 py-1 rounded-full text-xs">Rare</span><span class="bg-white/10 px-3 py-1 rounded-full text-xs">3D</span></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. NFT в Telegram и TON -->
+    <div class="slide" data-slide="8">
+      <div class="absolute inset-0 bg-[#1a1a2e] p-12 flex flex-col">
+        <div class="text-center mb-12"><h1 class="text-5xl font-bold mb-4">NFT в Telegram и TON</h1><p class="text-xl text-gray-400">Массовое внедрение Web3 через мессенджер</p></div>
+        <div class="flex items-center justify-center gap-16 flex-1">
+          <div class="w-80 bg-[#242f3d] rounded-2xl p-4"><div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/10"><div class="w-10 h-10 rounded-full bg-[#0088cc] flex items-center justify-center text-white"><i class="fab fa-telegram-plane text-xl"></i></div><span class="font-bold">Telegram</span></div><div class="space-y-4"><div class="bg-[#2b5278] p-3 rounded-xl text-sm text-right">Лови подарок! 🎁</div><div class="bg-[#17212b] p-3 rounded-lg flex items-center gap-3"><div class="w-8 h-8 rounded bg-purple-500/20 flex items-center justify-center text-purple-400"><i class="fas fa-gift"></i></div><div class="text-xs"><div class="font-bold">Telegram Gifts</div><div class="opacity-50">Цифровые подарки</div></div></div></div></div>
+          <div class="w-16 h-16 rounded-full bg-[#1a1a2e] border-2 border-[#0088cc] flex items-center justify-center"><i class="fas fa-exchange-alt text-[#0088cc] text-xl"></i></div>
+          <div class="w-80 bg-[#242f3d] rounded-2xl p-4 border border-[#0098ea]/30"><div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/10"><div class="w-10 h-10 rounded-full flex items-center justify-center text-white" style="background: linear-gradient(135deg,#0088cc,#0098ea);"><i class="fas fa-gem text-xl"></i></div><span class="font-bold">TON Blockchain</span></div><div class="bg-[#17212b] p-4 rounded-lg"><div class="text-xs text-gray-400 mb-2">Smart Contract</div><div class="font-mono text-[10px] text-[#4ecca3]">EQCxE6mUtQ...9Jk8s</div></div></div>
+        </div>
+        <div class="grid grid-cols-3 gap-6 mt-8 text-center"><div><i class="fas fa-bolt text-3xl text-yellow-400 mb-3"></i><h3 class="font-bold mb-1">Мгновенно</h3><p class="text-xs text-gray-400">Передача внутри чата</p></div><div><i class="fas fa-user-shield text-3xl text-[#4ecca3] mb-3"></i><h3 class="font-bold mb-1">Безопасно</h3><p class="text-xs text-gray-400">Защита блокчейна</p></div><div><i class="fas fa-users text-3xl text-[#0088cc] mb-3"></i><h3 class="font-bold mb-1">Массово</h3><p class="text-xs text-gray-400">Доступно 800 млн+</p></div></div>
+      </div>
+    </div>
+
+    <!-- 9. Экосистема TON -->
+    <div class="slide" data-slide="9">
+      <div class="absolute inset-0 bg-[#1a1a2e] p-12 flex flex-col">
+        <h1 class="text-5xl font-bold mb-2 text-white">Экосистема TON</h1>
+        <p class="text-xl text-gray-400 mb-10">The Open Network: Технологии будущего в вашем мессенджере</p>
+        <div class="grid grid-cols-2 gap-8 flex-1">
+          <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8"><div class="w-16 h-16 rounded-full bg-[#4ecca3]/20 flex items-center justify-center mb-6"><i class="fas fa-bolt text-3xl text-[#4ecca3]"></i></div><h3 class="text-2xl font-bold mb-3 text-white">Высокая скорость</h3><p class="text-gray-300 text-lg">Мгновенная обработка миллионов транзакций в секунду благодаря уникальной архитектуре.</p></div>
+          <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8"><div class="w-16 h-16 rounded-full bg-[#a78bfa]/20 flex items-center justify-center mb-6"><i class="fas fa-percent text-3xl text-[#a78bfa]"></i></div><h3 class="text-2xl font-bold mb-3 text-white">Низкие комиссии</h3><p class="text-gray-300 text-lg">Минимальная стоимость переводов делает микротранзакции доступными для всех.</p></div>
+          <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8"><div class="w-16 h-16 rounded-full bg-[#0088cc]/20 flex items-center justify-center mb-6"><i class="fab fa-telegram-plane text-3xl text-[#0088cc]"></i></div><h3 class="text-2xl font-bold mb-3 text-white">Интеграция с Telegram</h3><p class="text-gray-300 text-lg">Бесшовная работа: кошелек, приложения и сервисы в одном окне мессенджера.</p></div>
+          <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8"><div class="w-16 h-16 rounded-full bg-[#f472b6]/20 flex items-center justify-center mb-6"><i class="fas fa-users text-3xl text-[#f472b6]"></i></div><h3 class="text-2xl font-bold mb-3 text-white">Удобство для пользователей</h3><p class="text-gray-300 text-lg">Простой вход в Web3 без сложных настроек и технических барьеров.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. Практическая часть + скриншоты -->
+    <div class="slide" data-slide="10">
+      <div class="absolute inset-0 bg-[#0b0f19] p-12 flex flex-col">
+        <header class="mb-8">
+          <div class="flex items-center gap-3 mb-2"><div class="w-8 h-1 bg-emerald-500 rounded-full"></div><span class="text-emerald-400 font-medium tracking-wider text-sm uppercase">Практическая часть</span></div>
+          <h1 class="text-5xl font-bold leading-tight max-w-3xl text-white">Интерактивный веб-сайт</h1>
+          <p class="text-slate-400 mt-4 text-lg max-w-2xl">Образовательная платформа с визуализациями. Скриншоты с сайта project-crypto-education.vercel.app</p>
+        </header>
+        <div class="grid grid-cols-12 gap-8 flex-1">
+          <div class="col-span-4 space-y-6">
+            <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6"><div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-emerald-400 text-xl" style="background: linear-gradient(135deg,rgba(16,185,129,0.2),rgba(139,92,246,0.2));"><i class="fa-solid fa-sitemap"></i></div><h3 class="text-xl font-semibold mb-2">Структура сайта</h3><ul class="space-y-3 text-slate-300 text-sm"><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i>Главная: Введение и навигация</li><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i>Блокчейн: Теория и принципы</li><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i>Криптовалюты: Майнинг и экономика</li><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i>NFT, TON и др.</li></ul></div>
+            <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6"><div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-purple-400 text-xl" style="background: linear-gradient(135deg,rgba(16,185,129,0.2),rgba(139,92,246,0.2));"><i class="fa-solid fa-wand-magic-sparkles"></i></div><h3 class="text-xl font-semibold mb-2">Уникальность</h3><p class="text-slate-300 text-sm">Динамические симуляции процессов в реальном времени.</p></div>
+          </div>
+          <div class="col-span-8 grid grid-cols-2 gap-6">
+            <div class="col-span-2 bg-white/5 border border-white/10 rounded-2xl overflow-hidden"><img src="assets/blockchain_main.jpg" alt="Скриншот: Блокчейн на сайте" class="w-full h-64 object-cover"><div class="p-4"><h4 class="text-lg font-medium text-white mb-1">Раздел «Блокчейн»</h4><p class="text-slate-400 text-sm">Главная страница с визуализацией</p></div></div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden"><img src="assets/cryptocurrency_main.jpg" alt="Скриншот: Криптовалюта" class="w-full h-40 object-cover"><div class="p-3"><h4 class="font-medium text-white">Раздел «Криптовалюта»</h4></div></div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col justify-center"><div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 mb-3"><i class="fa-solid fa-microchip"></i></div><h4 class="text-lg font-medium mb-1">Симуляция Майнинга</h4><p class="text-slate-400 text-xs">Наглядный процесс подтверждения блоков</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. Технологический стек -->
+    <div class="slide" data-slide="11">
+      <div class="absolute inset-0 bg-[#0b0f19] p-12 flex flex-col text-white">
+        <header class="mb-10"><div class="flex items-center gap-3 mb-2"><div class="w-10 h-1 rounded-full" style="background: linear-gradient(to right,#10b981,#8b5cf6);"></div><span class="text-emerald-400 font-semibold tracking-wider text-sm uppercase">Инструменты разработки</span></div><h1 class="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">Используемые технологии</h1><p class="text-gray-400 mt-4 text-xl max-w-2xl">Современный стек для создания быстрого, интерактивного образовательного ресурса.</p></header>
+        <main class="grid grid-cols-3 gap-6 flex-1">
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-6"><div class="h-12 w-12 rounded-xl bg-blue-500/20 flex items-center justify-center mb-4"><i class="fa-brands fa-react text-2xl text-blue-400"></i></div><h3 class="text-2xl font-bold mb-2">Next.js</h3><p class="text-gray-400 text-sm">Фреймворк на базе React. Оптимизация производительности и удобная маршрутизация.</p></div>
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-6"><div class="h-12 w-12 rounded-xl bg-yellow-500/20 flex items-center justify-center mb-4"><i class="fa-solid fa-code text-2xl text-yellow-400"></i></div><h3 class="text-2xl font-bold mb-2">TypeScript</h3><p class="text-gray-400 text-sm">Строгая типизация для надежности кода.</p></div>
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-6"><div class="h-12 w-12 rounded-xl bg-cyan-500/20 flex items-center justify-center mb-4"><i class="fa-solid fa-wind text-2xl text-cyan-400"></i></div><h3 class="text-2xl font-bold mb-2">Tailwind CSS</h3><p class="text-gray-400 text-sm">Утилитарный CSS-фреймворк для быстрой стилизации.</p></div>
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-6 col-span-2"><div class="h-12 w-12 rounded-xl bg-purple-500/20 flex items-center justify-center mb-4"><i class="fa-solid fa-wand-magic-sparkles text-2xl text-purple-400"></i></div><h3 class="text-2xl font-bold mb-2">Framer Motion</h3><p class="text-gray-400 text-sm">Плавные анимации. Оживляет интерфейс, делая обучение интерактивным.</p></div>
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-6"><div class="h-12 w-12 rounded-xl bg-white/20 flex items-center justify-center mb-4"><i class="fa-solid fa-server text-2xl text-white"></i></div><h3 class="text-2xl font-bold mb-2">Vercel</h3><p class="text-gray-400 text-sm">Деплой и хостинг. Мгновенная публикация.</p></div>
+        </main>
+      </div>
+    </div>
+
+    <!-- 12. Результат работы -->
+    <div class="slide" data-slide="12">
+      <div class="absolute inset-0 bg-[#0b0f19] p-12 flex flex-col justify-center text-white">
+        <div class="grid grid-cols-12 gap-12 items-center">
+          <div class="col-span-5">
+            <div class="flex items-center gap-3 mb-6"><div class="w-12 h-1 bg-emerald-400 rounded-full"></div><span class="text-emerald-400 font-bold tracking-widest text-sm uppercase">Итоги проекта</span></div>
+            <h1 class="text-5xl font-bold leading-tight mb-8">Цели достигнуты:<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-500">Сложное стало простым</span></h1>
+            <p class="text-gray-300 text-lg mb-8 border-l-4 border-white/10 pl-6">Создан полноценный образовательный ресурс, который трансформирует абстрактные технические концепции в понятные визуальные образы.</p>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6"><div class="flex items-center gap-4 mb-3"><div class="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center"><i class="fa-solid fa-check text-emerald-400"></i></div><h3 class="font-bold text-xl">Готов к использованию</h3></div><p class="text-gray-400 text-sm">Может применяться как учебное пособие на уроках информатики или для самообразования.</p></div>
+          </div>
+          <div class="col-span-7 grid grid-cols-2 gap-6">
+            <div class="bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-3xl p-8 h-64"><div class="w-14 h-14 rounded-2xl bg-blue-500/20 flex items-center justify-center mb-4"><i class="fa-solid fa-laptop-code text-3xl text-blue-400"></i></div><h3 class="text-2xl font-bold mb-2">Образовательный сайт</h3><p class="text-gray-400 text-sm">Веб-ресурс с адаптивным дизайном и удобной навигацией.</p></div>
+            <div class="bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-3xl p-8 h-64 mt-12"><div class="w-14 h-14 rounded-2xl bg-purple-500/20 flex items-center justify-center mb-4"><i class="fa-solid fa-eye text-3xl text-purple-400"></i></div><h3 class="text-2xl font-bold mb-2">Наглядность</h3><p class="text-gray-400 text-sm">Блокчейн и майнинг через интерактивные визуализации.</p></div>
+            <div class="bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-3xl p-8 h-64"><div class="w-14 h-14 rounded-2xl bg-yellow-500/20 flex items-center justify-center mb-4"><i class="fa-solid fa-layer-group text-3xl text-yellow-400"></i></div><h3 class="text-2xl font-bold mb-2">Структурированность</h3><p class="text-gray-400 text-sm">Материал разбит на логические блоки.</p></div>
+            <div class="bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-3xl p-8 h-64 mt-12"><div class="w-14 h-14 rounded-2xl bg-cyan-500/20 flex items-center justify-center mb-4"><i class="fa-brands fa-telegram text-3xl text-cyan-400"></i></div><h3 class="text-2xl font-bold mb-2">Экосистема TON</h3><p class="text-gray-400 text-sm">Интеграция криптовалют с мессенджером.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13. Заключение -->
+    <div class="slide" data-slide="13">
+      <div class="absolute inset-0 bg-[#0b0f19] p-12 flex flex-col justify-center items-center text-white">
+        <div class="w-full max-w-5xl text-center">
+          <div class="inline-flex items-center gap-3 mb-6 px-4 py-1 rounded-full bg-white/5 border border-white/10"><div class="w-2 h-2 bg-emerald-400 rounded-full"></div><span class="text-emerald-400 font-semibold tracking-wider text-sm uppercase">Итоги проекта</span></div>
+          <h1 class="text-6xl font-bold leading-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-400">Будущее цифрового образования</h1>
+          <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-12">Мы создали инструмент, который превращает сложные технологии блокчейна в понятные знания, открывая школьникам дверь в мир Web3.</p>
+          <div class="grid grid-cols-3 gap-8 mb-12">
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-8"><div class="w-16 h-16 rounded-2xl bg-blue-500/20 flex items-center justify-center mb-6 mx-auto"><i class="fa-solid fa-layer-group text-3xl text-blue-400"></i></div><h3 class="text-xl font-bold mb-3">Просто о сложном</h3><p class="text-gray-400 text-sm">Концепции объяснены доступным языком через визуальные метафоры.</p></div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-8"><div class="w-16 h-16 rounded-2xl bg-emerald-500/20 flex items-center justify-center mb-6 mx-auto"><i class="fa-solid fa-laptop-code text-3xl text-emerald-400"></i></div><h3 class="text-xl font-bold mb-3">Готовый инструмент</h3><p class="text-gray-400 text-sm">Полноценный образовательный ресурс для учебной программы.</p></div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-8"><div class="w-16 h-16 rounded-2xl bg-purple-500/20 flex items-center justify-center mb-6 mx-auto"><i class="fa-solid fa-rocket text-3xl text-purple-400"></i></div><h3 class="text-xl font-bold mb-3">Цифровая грамотность</h3><p class="text-gray-400 text-sm">Формирование понимания технологий децентрализованного интернета.</p></div>
+          </div>
+          <div class="px-8 py-4 bg-white/5 border border-white/20 rounded-full inline-flex items-center gap-4"><span class="text-lg font-medium">Технологии будущего доступны уже сегодня</span><i class="fa-solid fa-arrow-right text-emerald-400"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14. Список литературы -->
+    <div class="slide" data-slide="14">
+      <div class="absolute inset-0 bg-[#0b0f19] p-12 flex flex-col text-white">
+        <header class="mb-10"><div class="flex items-center gap-3 mb-2"><div class="w-12 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full"></div><span class="text-emerald-400 font-semibold tracking-wider text-sm uppercase">Источники</span></div><h1 class="text-5xl font-bold mb-4">Список использованной<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">литературы</span></h1><p class="text-lg text-slate-400 max-w-2xl">Материалы и ресурсы, использованные при разработке проекта.</p></header>
+        <div class="flex-1 grid grid-cols-2 gap-8">
+          <div class="bg-white/5 border border-white/5 rounded-2xl p-8"><div class="flex items-center gap-4 mb-4"><div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-xl"><i class="fa-solid fa-book-bookmark"></i></div><h2 class="text-2xl font-bold">Документация</h2></div><ul class="space-y-4"><li class="flex items-start gap-3 p-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i><div><h3 class="font-medium">TON Documentation</h3><p class="text-sm text-slate-500">Официальная документация The Open Network</p></div></li><li class="flex items-start gap-3 p-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i><div><h3 class="font-medium">Telegram API</h3><p class="text-sm text-slate-500">Mini Apps и боты</p></div></li><li class="flex items-start gap-3 p-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i><div><h3 class="font-medium">Next.js & React Docs</h3><p class="text-sm text-slate-500">Справочные материалы</p></div></li></ul></div>
+          <div class="bg-white/5 border border-white/5 rounded-2xl p-8"><div class="flex items-center gap-4 mb-4"><div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 text-xl"><i class="fa-solid fa-globe"></i></div><h2 class="text-2xl font-bold">Образовательные ресурсы</h2></div><ul class="space-y-4"><li class="flex items-start gap-3 p-3"><i class="fa-solid fa-arrow-right text-purple-500 mt-1"></i><div><h3 class="font-medium">Blockchain.com Explorer</h3><p class="text-sm text-slate-500">Аналитика сети</p></div></li><li class="flex items-start gap-3 p-3"><i class="fa-solid fa-arrow-right text-purple-500 mt-1"></i><div><h3 class="font-medium">Habr & Medium</h3><p class="text-sm text-slate-500">NFT и смарт-контракты</p></div></li><li class="flex items-start gap-3 p-3"><i class="fa-solid fa-arrow-right text-purple-500 mt-1"></i><div><h3 class="font-medium">Getgems.io</h3><p class="text-sm text-slate-500">NFT-маркетплейсы на TON</p></div></li></ul></div>
+        </div>
+        <footer class="mt-8 flex justify-between items-center text-slate-500 text-sm border-t border-slate-800 pt-6"><p>© 2025 Образовательный проект. Школа № 1208.</p><div class="flex gap-4"><span><i class="fa-brands fa-telegram mr-2"></i>@fckpaveldurov</span><span><i class="fa-brands fa-github mr-2"></i>github.com/kitan1zz/Project</span></div></footer>
+      </div>
+    </div>
+
+    <!-- 15. Спасибо за внимание + QR -->
+    <div class="slide" data-slide="15">
+      <div class="absolute inset-0 bg-[#1a1a2e] flex flex-col justify-center items-center" style="background: radial-gradient(circle at center, #232342 0%, #1a1a2e 100%);">
+        <div class="text-center">
+          <h1 class="text-6xl font-bold mb-8" style="background: linear-gradient(135deg,#fff 0%,#a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Спасибо за внимание!</h1>
+          <p class="text-2xl text-gray-300 mb-12">Посетите наш образовательный сайт</p>
+          <div class="flex flex-col items-center gap-6">
+            <a href="https://project-crypto-education.vercel.app/" target="_blank" rel="noopener" class="block">
+              <img src="assets/qr-code_Project.gif" alt="QR-код на сайт project-crypto-education.vercel.app" class="w-48 h-48 mx-auto border-4 border-white/20 rounded-2xl">
+            </a>
+            <a href="https://project-crypto-education.vercel.app/" target="_blank" rel="noopener" class="text-[#4ecca3] text-xl font-semibold hover:underline">project-crypto-education.vercel.app</a>
+          </div>
+          <p class="text-gray-500 mt-12 text-sm">Отсканируйте QR-код для перехода на сайт</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Навигация без водяных знаков -->
+  <div class="slide-nav">
+    <button id="prev" aria-label="Назад"><i class="fas fa-chevron-left"></i></button>
+    <span class="slide-counter"><span id="current">1</span> / <span id="total">15</span></span>
+    <button id="next" aria-label="Вперёд"><i class="fas fa-chevron-right"></i></button>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+    let current = 1;
+
+    function showSlide(n) {
+      current = Math.max(1, Math.min(n, total));
+      slides.forEach((s, i) => s.classList.toggle('active', i + 1 === current));
+      document.getElementById('current').textContent = current;
+    }
+
+    document.getElementById('prev').onclick = () => showSlide(current - 1);
+    document.getElementById('next').onclick = () => showSlide(current + 1);
+    document.getElementById('total').textContent = total;
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') showSlide(current - 1);
+      if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); showSlide(current + 1); }
+    });
+  </script>
+</body>
+</html>

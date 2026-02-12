@@ -100,7 +100,7 @@ export default function BlockchainPage() {
             <div className="mt-8">
               <div className="relative rounded-lg overflow-hidden border-2 border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-900/50 aspect-video flex items-center justify-center">
                 <img
-                  src="/blockchain-visualization.jpg"
+                  src="/blockchain_text.png"
                   alt="Визуализация блокчейна"
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -108,9 +108,6 @@ export default function BlockchainPage() {
                     target.style.display = 'none'
                   }}
                 />
-                <div className="absolute inset-0 flex items-center justify-center text-gray-400 dark:text-gray-600">
-                  <span className="text-sm">Здесь будет картинка блокчейна</span>
-                </div>
               </div>
             </div>
           </motion.div>

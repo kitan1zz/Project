@@ -50,7 +50,8 @@ export default function Home() {
                 <div className="flex-1">
                   <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white">Блокчейн</h2>
                   <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                    <ClickableTerm term="Блокчейн" articlePath="/blockchain" tooltip="Распределённая база данных" /> — это технология, которая позволяет хранить информацию в виде цепочки блоков. 
+                    <ClickableTerm term="Блокчейн" articlePath="/blockchain" tooltip="Распределённая база данных" /> — это в первую очередь децентрализованная распределённая база данных, 
+                    в которой информация хранится в виде цепочки взаимосвязанных блоков (blockchain). 
                     Каждый <ClickableTerm term="блок" articlePath="/blockchain" tooltip="Единица данных в блокчейне" /> содержит список транзакций и связан с предыдущим блоком через <ClickableTerm term="хэш" articlePath="/blockchain" tooltip="Цифровая подпись блока" />. 
                     Благодаря этому цепочка становится неизменяемой: если кто-то попытается изменить старый блок, нарушится связь со всеми последующими блоками. 
                     Для добавления новых блоков используется процесс <ClickableTerm term="майнинг" articlePath="/blockchain" highlightId="майнинг" tooltip="Процесс создания новых блоков" />, 
@@ -58,8 +59,16 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="w-full md:w-64 flex-shrink-0">
-                  <div className="relative rounded-lg overflow-hidden border-2 border-gray-200 dark:border-gray-700 bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 aspect-square flex items-center justify-center">
-                    <div className="text-6xl">⛓️</div>
+                  <div className="relative rounded-lg overflow-hidden border-2 border-gray-200 dark:border-gray-700 bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 aspect-square">
+                    <img
+                      src="/blockchain_main.jpg"
+                      alt="Иллюстрация блокчейна"
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement
+                        target.style.display = 'none'
+                      }}
+                    />
                   </div>
                 </div>
               </div>
@@ -82,8 +91,16 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="w-full md:w-64 flex-shrink-0">
-                  <div className="relative rounded-lg overflow-hidden border-2 border-gray-200 dark:border-gray-700 bg-gradient-to-br from-amber-100 to-yellow-100 dark:from-amber-900/30 dark:to-yellow-900/30 aspect-square flex items-center justify-center">
-                    <div className="text-6xl">₿</div>
+                  <div className="relative rounded-lg overflow-hidden border-2 border-gray-200 dark:border-gray-700 bg-gradient-to-br from-amber-100 to-yellow-100 dark:from-amber-900/30 dark:to-yellow-900/30 aspect-square">
+                    <img
+                      src="/cryptocurrency_main.jpg"
+                      alt="Иллюстрация криптовалюты"
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement
+                        target.style.display = 'none'
+                      }}
+                    />
                   </div>
                 </div>
               </div>
